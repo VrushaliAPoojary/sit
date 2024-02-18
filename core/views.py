@@ -12,15 +12,15 @@ def index(request):
         from_email = request.POST.get('email') 
         print("From Email:", from_email)
         
-        # Ensure from_email is a string containing a single email address
+        
         if re.match(r'^[\w\.-]+@[\w\.-]+$', from_email):
-            # Split the email address to extract the username
+            
             email_username = from_email.split('@')[0]
             print(email_username)
             send_mail(
                 f'{fname}',
                 "Here is thesafsd message.",
-                f'{email_username}@gmail.com',  # Construct the sender email address
+                f'{email_username}@gmail.com',  
                 ['snapship43@gmail.com'],  
                 fail_silently=False,
             )
@@ -28,6 +28,6 @@ def index(request):
             fevent.save() 
             messages.success(request, "Profile details updated.")
         else:
-            # Handle invalid email address
+           
             messages.error(request, "Invalid email address")
     return render(request, 'index.html')
