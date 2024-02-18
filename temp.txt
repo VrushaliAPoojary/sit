@@ -1,0 +1,12 @@
+django-admin startproject <project name>
+python manage.py startapp <app name>
+python manage.py makemigrations # it will generate sql commands for db
+python manage.py migrate
+python manage.py createsuperuser
+pip install virtualenv
+ python manage.py runserver
+ django-admin startapp core
+  cd .\myproject
+  .\venv\Scripts\activate
+  python manage.py makemigrations core
+   python manage.py sqlmigrate core  0001
