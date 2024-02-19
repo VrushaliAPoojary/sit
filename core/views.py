@@ -5,8 +5,10 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.conf import settings
 import re
+from .forms import ImageForm
+from .models import Image
 
-def index(request):
+def about(request):
     if request.method == 'POST':
         fname = request.POST.get('name') 
         from_email = request.POST.get('email') 
@@ -37,8 +39,22 @@ def index(request):
     return render(request, 'book.html')
 
 
-def about(request):
-    return render(request,'about.html' )
+
 
 def contact(request):
     return render(request,'contact.html' )
+
+
+def index(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Replace 'success_url' with the URL of your success page
+    else:
+        form = ImageForm()
+    return render(request, 'book.html', {'form': form})
+
+
+def success(request):
+    return render(request, 'success.html')

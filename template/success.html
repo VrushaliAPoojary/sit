@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form Success</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Uploaded Images</h1>
+        <hr>
+        <div class="row">
+            {% for image in img %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card">
+                        <img src="{{ image.image.url }}" class="card-img-top" alt="Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ image.caption }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
